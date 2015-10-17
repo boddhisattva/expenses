@@ -4,7 +4,7 @@ RSpec.describe "HomePage", type: :request do
   describe "Home page" do
     it "should have the name of the app" do
       visit root_path
-      expect(page).to have_content('User Registrations App')
+      expect(page).to have_content('Expenses App')
     end
   end
 

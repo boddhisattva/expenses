@@ -1,8 +1,7 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "User Registrations App", '#', style:"float:left" %>
-        <% if logged_in? %>
-                <%= link_to "Log out", logout_path, method: "delete", style:"float:right" %>
-        <% end %>
-  </div>
-</header>
+<title> Expenses | <%= yield(:title) %> </title>
+<div class="container">
+  <h1> Expenses App </h1>
+    <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: "delete", style:"float:right" %>
+    <% end %>
+</div>

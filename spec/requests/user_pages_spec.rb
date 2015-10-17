@@ -10,7 +10,7 @@ RSpec.describe "UserPages", type: :request do
       before { visit signup_path }
 
       it { should have_content('Sign up') }
-      it { should has_title?('Sign up') }
+      it { should have_title('Expenses | Sign up') }
     end
 
     describe "signup" do
