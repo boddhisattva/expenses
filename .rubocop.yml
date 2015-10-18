@@ -10,6 +10,6 @@ Style/RedundantSelf:
 Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
-# 80 characters as line length is generally too small
+# A line with 80 characters length is generally too small
 Metrics/LineLength:
   Max: 120
