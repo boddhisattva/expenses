@@ -4,6 +4,7 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$white: #ffffff;
 
 /* universal */
 
@@ -57,7 +58,7 @@ p {
 /* header */
 
 #logo {
-  color: white;
+  color: $white;
   float: left;
   font-size: 1.7em;
   font-weight: bold;
@@ -67,7 +68,7 @@ p {
   text-transform: uppercase;
 
   &:hover {
-    color: white;
+    color: $white;
     text-decoration: none;
   }
 }
