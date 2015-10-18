@@ -44,6 +44,7 @@ RSpec.describe "UserPages", type: :request do
       describe "with valid information" do
         before do
           fill_in "Email",        with: "user@example.com"
+          fill_in "Name",         with: "John Doe"
           fill_in "Password",     with: "foobar"
           fill_in "Password Confirmation", with: "foobar"
         end
@@ -57,7 +58,7 @@ RSpec.describe "UserPages", type: :request do
           expect(page).to have_content("Welcome aboard")
         end
 
-        it "should redirect to a login page with an appropriate welcome message" do
+        it "should redirect to a login page that should contain a users email address" do
           click_button submit
           expect(page).to have_content("user@example.com")
         end
@@ -72,15 +73,19 @@ RSpec.describe "UserPages", type: :request do
 
     describe "logout" do
 
-      before { visit login_path }
+      before do
+        visit login_path
+        @user = FactoryGirl.create(:user)
+      end
+
       let(:submit) { "Log in" }
-      @user = FactoryGirl.create(:user)
 
       describe "for a logged in user" do
         before do
-          fill_in "Email",        with: "t1@test.com"
-          fill_in "Password",     with: "foo"
+          fill_in "Email",        with: @user.email
+          fill_in "Password",     with: @user.password
         end
+
         it "should redirect to home page" do
           click_button submit
           click_link "Log out"
