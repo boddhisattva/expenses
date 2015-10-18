@@ -1,2 +1,3 @@
-# users_registration
-Sample user registration
+# Expense Management
+
+This is an app to help better track your expenses
