@@ -94,6 +94,14 @@ RSpec.describe User, type: :model do
         expect(@user).not_to be_valid
       end
     end
+
+    context "with a password that's too short" do
+      it "should not be valid" do
+        @user.password = "a" * 5
+        @user.password_confirmation = "a" * 5
+        expect(@user).not_to be_valid
+      end
+    end
   end
 
   describe "return value of authenticate method" do
