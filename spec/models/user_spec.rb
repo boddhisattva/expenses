@@ -10,6 +10,9 @@ RSpec.describe User, type: :model do
 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+  it { should respond_to(:password_digest) }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
 
   it { should be_valid }
 
@@ -65,6 +68,5 @@ RSpec.describe User, type: :model do
       expect(@user_with_same_email).not_to be_valid
     end
   end
-
 
 end
