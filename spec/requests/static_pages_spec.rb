@@ -11,7 +11,7 @@ RSpec.describe "StaticPages", type: :request do
     it "should have basic info about the app" do
       visit root_path
 
-      expect(page).to have_content('Welcome to the Expenses App where tracking your expenses are made easy')
+      expect(page).to have_content("Welcome to the Expenses App where tracking your expenses are made easy")
     end
   end
 
@@ -47,14 +47,13 @@ RSpec.describe "StaticPages", type: :request do
     it "should have the title Help" do
       visit contact_path
 
-      expect(page).to have_title('Expenses | Contact')
+      expect(page).to have_title("Expenses | Contact")
     end
 
     it "should have the content 'Contact'" do
       visit contact_path
 
-      expect(page).to have_content('Contact')
+      expect(page).to have_content("Contact")
     end
   end
-
 end
