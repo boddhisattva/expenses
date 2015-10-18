@@ -69,4 +69,24 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "when password is incorrectly specified" do
+    before do
+      @user = User.new(name: "Example User", email: "user@example.com",
+                       password: " ", password_confirmation: " ")
+    end
+
+    context "password is not present" do
+      it "should not be valid" do
+        expect(@user).not_to be_valid
+      end
+    end
+
+    context "password doesn't match confirmation" do
+      it "should not be valid" do
+        @user.password_confirmation = "mismatch"
+        expect(@user).not_to be_valid
+      end
+    end
+  end
+
 end
