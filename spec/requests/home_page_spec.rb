@@ -18,26 +18,28 @@ RSpec.describe "HomePage", type: :request do
   end
 
   describe "login" do
-    before { visit login_path }
+
+    before do
+      visit login_path
+      @user = FactoryGirl.create(:user)
+    end
     let(:submit) { "Log in" }
-    # let(:user) { FactoryGirl.create(:user) }
-    @user = FactoryGirl.create(:user)
 
     describe "with valid information" do
       before do
-        fill_in "Email",        with: "t1@test.com"
-        fill_in "Password",     with: "foo"
+        fill_in "Email",        with: @user.email
+        fill_in "Password",     with: @user.password
       end
       it "should login the user and display his email on the logged in page" do
         click_button submit
-        expect(page).to have_content("Hello t1@test.com")
+        expect(page).to have_content("Hello #{@user.email}")
       end
     end
 
     describe "with invalid information" do
       before do
-        fill_in "Email",        with: "t1@test.com"
-        fill_in "Password",     with: "fo"
+        fill_in "Email",        with: @user.email
+        fill_in "Password",     with: "a wrong password"
       end
       it "should display appropriate login error message" do
         click_button submit
