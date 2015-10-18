@@ -58,9 +58,9 @@ RSpec.describe "UserPages", type: :request do
           expect(page).to have_content("Welcome aboard")
         end
 
-        it "should redirect to a login page that should contain a users email address" do
+        it "should redirect to a login page that should contain a users name" do
           click_button submit
-          expect(page).to have_content("user@example.com")
+          expect(page).to have_content("John Doe")
         end
 
         it "should redirect to a login page with a logout link" do
