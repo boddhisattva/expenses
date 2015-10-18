@@ -75,8 +75,15 @@ RSpec.describe User, type: :model do
                        password: " ", password_confirmation: " ")
     end
 
-    context "password is not present" do
+    context "password is an empty string" do
       it "should not be valid" do
+        expect(@user).not_to be_valid
+      end
+    end
+
+    context "password is nil" do
+      it "should not be valid" do
+        @user.password_confirmation = nil
         expect(@user).not_to be_valid
       end
     end
