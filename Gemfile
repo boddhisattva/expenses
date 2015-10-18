@@ -37,6 +37,10 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -48,13 +52,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '4.2.0'
-end
-
-group :development do
-  gem 'pry-rails'
-  gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 group :test do
