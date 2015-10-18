@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "UserPages", type: :request do
 
@@ -9,8 +9,8 @@ RSpec.describe "UserPages", type: :request do
     describe "signup page" do
       before { visit signup_path }
 
-      it { should have_content('Sign up') }
-      it { should has_title?('Sign up') }
+      it { should have_content("Sign up") }
+      it { should have_title("Expenses | Sign up") }
     end
 
     describe "signup" do
@@ -37,7 +37,7 @@ RSpec.describe "UserPages", type: :request do
 
         it "should render the sign up page again" do
           click_button submit
-          expect(page).to have_content('Password confirmation')
+          expect(page).to have_content("Password confirmation")
         end
       end
 
@@ -54,17 +54,17 @@ RSpec.describe "UserPages", type: :request do
 
         it "should redirect to a login page with an appropriate welcome message" do
           click_button submit
-          expect(page).to have_content('Welcome aboard')
+          expect(page).to have_content("Welcome aboard")
         end
 
         it "should redirect to a login page with an appropriate welcome message" do
           click_button submit
-          expect(page).to have_content('user@example.com')
+          expect(page).to have_content("user@example.com")
         end
 
         it "should redirect to a login page with a logout link" do
           click_button submit
-          expect(page).to have_content('Log out')
+          expect(page).to have_content("Log out")
         end
 
       end
@@ -84,7 +84,7 @@ RSpec.describe "UserPages", type: :request do
         it "should redirect to home page" do
           click_button submit
           click_link "Log out"
-          expect(page).to have_content('New user? Sign up now!')
+          expect(page).to have_content("New user? Sign up now!")
         end
       end
 

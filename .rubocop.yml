@@ -1,0 +1,15 @@
+# Prefer doubles quotes
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# Self adds readability
+Style/RedundantSelf:
+  Enabled: false
+
+# Keep extra line detected at block body end for better readability
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# A line with 80 characters length is generally too small
+Metrics/LineLength:
+  Max: 120
