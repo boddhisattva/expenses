@@ -233,3 +233,5 @@ Lint/LiteralInInterpolation:
   Enabled: false
 Metrics/LineLength:
   Max: 120
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
