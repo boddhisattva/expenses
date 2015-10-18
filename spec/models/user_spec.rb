@@ -96,4 +96,21 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "return value of authenticate method" do
+    before { @user.save }
+    let(:found_user) { User.find_by(email: @user.email) }
+
+    describe "with valid password" do
+      it "should return the user" do
+        expect(found_user.authenticate(@user.password)).to eq(@user)
+      end
+    end
+
+    describe "with invalid password" do
+      it "should return the user" do
+        expect(found_user.authenticate("an invalid password")).to be false
+      end
+    end
+  end
+
 end
