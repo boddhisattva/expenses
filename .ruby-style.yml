@@ -231,3 +231,7 @@ Lint/LiteralInCondition:
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.
   Enabled: false
+Metrics/LineLength:
+  Max: 120
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
