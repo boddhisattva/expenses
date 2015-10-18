@@ -22,6 +22,7 @@ textarea {
 
 .center {
   text-align: center;
+
   h1 {
     margin-bottom: 10px;
   }
@@ -71,6 +72,7 @@ p {
     color: $white;
     text-decoration: none;
   }
+
 }
 
 /* footer */
@@ -80,13 +82,16 @@ footer {
   color: $gray-light;
   margin-top: 45px;
   padding-top: 5px;
+
   a {
     color: $gray;
 
     &:hover {
       color: $gray-darker;
     }
+
   }
+
   small {
     float: left;
   }
@@ -100,4 +105,6 @@ footer {
       margin-left: 15px;
     }
   }
+
 }
+
