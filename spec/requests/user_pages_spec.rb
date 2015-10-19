@@ -17,7 +17,7 @@ RSpec.describe "UserPages", type: :request do
 
       before { visit signup_path }
 
-      let(:submit) { "Create user" }
+      let(:submit) { "Create my account" }
 
       describe "with invalid information" do
         before do
