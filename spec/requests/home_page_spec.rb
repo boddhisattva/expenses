@@ -32,7 +32,7 @@ RSpec.describe "HomePage", type: :request do
       end
       it "should login the user and display their email on the logged in page" do
         click_button submit
-        expect(page).to have_content("Hello #{@user.name}")
+        expect(page).to have_content("#{@user.name}")
       end
     end
 
