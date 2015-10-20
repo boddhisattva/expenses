@@ -18,11 +18,11 @@ describe "Authentication" do
       before { click_button "Log in" }
 
       it { should have_title('Log in') }
-      it { should have_selector('div.alert.alert-error') }
+      it { should have_selector('div.alert.alert-danger') }
 
       describe "after visiting another page" do
         before { click_link "Home" }
-        it { should_not have_selector('div.alert.alert-error') }
+        it { should_not have_selector('div.alert.alert-danger') }
       end
     end
 
