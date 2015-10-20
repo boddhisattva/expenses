@@ -60,6 +60,7 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.2.0'
+  gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
 group :production do
