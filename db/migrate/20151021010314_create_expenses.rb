@@ -3,7 +3,7 @@ class CreateExpenses < ActiveRecord::Migration
     create_table :expenses do |t|
       t.string :name, null: false
       t.float :cost, null: false
-      t.datetime :date, null: false
+      t.date :date, null: false
       t.references :user, index: true
 
       t.timestamps null: false
