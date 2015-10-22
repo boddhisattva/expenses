@@ -1,5 +1,8 @@
 class Expense < ActiveRecord::Base
-  validates_presence_of :user
+  validates :user, presence: true
+  validates :cost, presence: true
+  validates :name, presence: true
+  validates :date, presence: true
 
   belongs_to :user
 end
