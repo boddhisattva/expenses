@@ -6,7 +6,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.build(expense_params)
     if @expense.save
       redirect_to root_path
       flash[:success] = "Expense was successfully created"
@@ -18,6 +18,6 @@ class ExpensesController < ApplicationController
   private
 
     def expense_params
-      params.require(:expense).permit(:name, :cost, :date, :user_id)
+      params.require(:expense).permit(:name, :cost, :date)
     end
 end

@@ -14,8 +14,6 @@
       <%= f.label :date %>
       <%= f.date_field :date, class: 'form-control' %>
 
-      <%= f.hidden_field :user_id, value: current_user.id %>
-
       <%= f.submit "Create expense", class: "btn btn-primary" %>
     <% end %>
   </div>
