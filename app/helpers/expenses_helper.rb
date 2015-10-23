@@ -4,7 +4,7 @@ module ExpensesHelper
   end
 
   def display_ajax_success(message)
-    html = ''
+    html = ""
     html << "<div class='alert alert-success '>\n"
     html << "<a href='#' class='close' onClick=\"parentNode.remove()\">×</a>"
     html << "#{message}"
