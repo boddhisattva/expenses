@@ -8,7 +8,7 @@ class ExpensesController < ApplicationController
   def create
     @expense = current_user.expenses.build(expense_params)
     if @expense.save
-      redirect_to root_path
+      redirect_to root_url
       flash[:success] = "Expense was successfully created"
     else
       render 'new'
@@ -23,7 +23,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     if @expense.update_attributes(expense_params)
       flash[:success] = "Expense updated"
-      redirect_to root_path
+      redirect_to root_url
     else
       render "edit"
     end
