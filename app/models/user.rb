@@ -13,5 +13,4 @@ class User < ActiveRecord::Base
   def expenses_feed
     Expense.get_all_by_user(self.id)
   end
-
 end
