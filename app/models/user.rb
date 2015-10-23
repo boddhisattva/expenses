@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   has_many :expenses, dependent: :destroy
+
+  def expenses_feed
+    Expense.get_all_by_user(self.id)
+  end
+
 end

@@ -27,7 +27,7 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     if @expense.update_attributes(expense_params)
       flash[:success] = "Expense updated"
-      redirect_to expenses_path
+      redirect_to root_path
     else
       render "edit"
     end
