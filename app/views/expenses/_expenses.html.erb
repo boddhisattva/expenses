@@ -1,7 +1,8 @@
 <script>
   $(document).ready(function(){
     $('#user_expenses').dataTable({
-      "order": [["2", "desc"]]
+      "order": [["2", "desc"]],
+      columnDefs: [ { orderable: false, targets: [3, 4] } ]
     });
   });
 </script>
