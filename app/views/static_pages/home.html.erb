@@ -12,7 +12,7 @@
         <%= render 'shared/user_expenses' %>
       </div>
     <% else %>
-      <p id="welcome_message" >Welcome to the Expenses App. Would you like to
+      <p id="welcome_message" > Welcome to the Expenses App <%= current_user.name %>. Would you like to
       <%= link_to "create a new expense", new_expense_path %>?</p>
     <% end %>
   </div>
