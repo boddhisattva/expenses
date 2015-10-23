@@ -5,4 +5,8 @@ class Expense < ActiveRecord::Base
   validates :date, presence: true
 
   belongs_to :user
+
+  def self.get_all_by_user(user_id)
+    where(user_id: user_id).order(date: :desc)
+  end
 end
