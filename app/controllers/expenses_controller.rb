@@ -19,6 +19,20 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def edit
+    @expense = Expense.find(params[:id])
+  end
+
+  def update
+    @expense = Expense.find(params[:id])
+    if @expense.update_attributes(expense_params)
+      flash[:success] = "Expense updated"
+      redirect_to expenses_path
+    else
+      render "edit"
+    end
+  end
+
   private
 
     def expense_params
