@@ -6,7 +6,5 @@ class Expense < ActiveRecord::Base
 
   belongs_to :user
 
-  def self.get_all_by_user(user_id)
-    where(user_id: user_id).order(date: :desc)
-  end
+  scope :order_by_most_recent, -> (user_id) { where(user_id: user_id).order(date: :desc) }
 end

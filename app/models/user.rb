@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   has_many :expenses, dependent: :destroy
 
   def expenses_feed
-    Expense.get_all_by_user(self.id)
+    Expense.order_by_most_recent(self.id)
   end
 end

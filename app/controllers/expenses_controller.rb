@@ -44,6 +44,6 @@ class ExpensesController < ApplicationController
     end
 
     def get_user_expenses
-      @expenses = Expense.get_all_by_user(current_user.id)
+      @expenses = Expense.order_by_most_recent(current_user.id)
     end
 end
