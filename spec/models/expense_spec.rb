@@ -28,8 +28,15 @@ RSpec.describe Expense, type: :model do
   end
 
   describe "when expense name is not present" do
-    before { @expense.name = nil }
-    it { should_not be_valid }
+    context "expense name is an empty string" do
+      before { @expense.name = "" }
+      it { should_not be_valid }
+    end
+
+    context "expense name is nil" do
+      before { @expense.name = nil }
+      it { should_not be_valid }
+    end
   end
 
   describe "when expense date is not present" do
