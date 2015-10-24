@@ -135,5 +135,10 @@ RSpec.describe User, type: :model do
     it "should have the right expenses in the right order" do
       expect(@user.expenses_feed).to eq [newer_expense, older_expense]
     end
+
+    it "should destroy associated expenses" do
+      user_expenses_count = @user.expenses.count
+      expect { @user.destroy }.to change {Expense.count}.by(-user_expenses_count)
+    end
   end
 end
