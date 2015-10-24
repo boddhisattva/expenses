@@ -16,6 +16,8 @@ RSpec.describe User, type: :model do
 
   it { should be_valid }
 
+  it { should respond_to(:expenses) }
+
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
