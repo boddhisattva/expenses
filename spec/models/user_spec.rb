@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
 
     it "should destroy associated expenses" do
       user_expenses_count = @user.expenses.count
-      expect { @user.destroy }.to change {Expense.count}.by(-user_expenses_count)
+      expect { @user.destroy }.to change { Expense.count }.by(-user_expenses_count)
     end
   end
 end
