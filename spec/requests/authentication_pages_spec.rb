@@ -32,7 +32,7 @@ describe "Authentication" do
         log_in user
       end
 
-      it { should have_title(user.name) }
+      it { should have_content(user.name) }
       it { should have_link('Profile',     href: user_path(user)) }
       it { should have_link('Log out',    href: logout_path) }
       it { should_not have_link('Log in', href: login_path) }
