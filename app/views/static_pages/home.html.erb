@@ -1,8 +1,24 @@
 <% provide(:title, 'Home') %>
-
-<div class="center jumbotron">
-  <h3>Welcome to the Expenses App where tracking your expenses is made easy</h3>
-
-
-  <%= link_to "New user? Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
-</div>
+<% if logged_in? %>
+<div id="expenses_destroy_result_message"></div>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+    </aside>
+    <% if @user_expenses.any? %>
+      <div id="list_expenses">
+        <%= render 'shared/user_expenses' %>
+      </div>
+    <% else %>
+      <p id="welcome_message" > Welcome to the Expenses App <%= current_user.name %>. Would you like to
+      <%= link_to "create a new expense", new_expense_path %>?</p>
+    <% end %>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h3>Welcome to the Expenses App where tracking your expenses is made easy</h3>
+    <%= link_to "New user? Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  </div>
+<% end %>

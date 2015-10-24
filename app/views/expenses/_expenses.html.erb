@@ -1,0 +1,38 @@
+<script>
+  $(document).ready(function(){
+    $('#user_expenses').dataTable({
+      "order": [["2", "desc"]],
+      columnDefs: [ { orderable: false, targets: [3, 4] } ]
+    });
+  });
+</script>
+
+<div id="create_expense_link">
+  <table>
+    <td><h3 id="expenses_page_heading" ><strong> Your expenses </strong></h3></td>
+    <td><p id="create_expense_link_text"><%= link_to "Create a new expense", new_expense_path, class: "btn btn-large btn-primary" %></p></td>
+  </table>
+</div>
+<table class="table table-bordered table-striped" id='user_expenses'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.name %></td>
+        <td><%= expense.cost %></td>
+        <td><%= format_date(expense.date) %></td>
+        <td><%= link_to "Edit", edit_expense_path(expense.id) %></td>
+        <td><%= link_to "Delete", expense_path(expense.id), method: :delete, data: {confirm: 'Are you sure?'}, remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

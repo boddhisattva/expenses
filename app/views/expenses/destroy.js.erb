@@ -1,0 +1,6 @@
+<% if @expense.errors.any? %>
+  $("#expenses_destroy_result_message").html("<%= escape_javascript(render 'shared/error_messages', obj: @expense) %>");
+<% else %>
+  $("#expenses_destroy_result_message").html("<%= escape_javascript(display_ajax_success("Expense deleted successfully").html_safe) %>");
+  $("#list_expenses").html("<%= escape_javascript(render 'expenses', expenses: @expenses) %>");
+<% end %>

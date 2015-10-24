@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user, only: [:show, :edit, :update]
+
   def new
     @user = User.new
   end
@@ -12,7 +14,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome aboard"
-      redirect_to @user
+      redirect_to root_url
     else
       render "new"
     end

@@ -44,7 +44,7 @@ RSpec.describe "StaticPages", type: :request do
   end
 
   describe "#contact" do
-    it "should have the title Help" do
+    it "should have the title Contact" do
       visit contact_path
 
       expect(page).to have_title("Expenses | Contact")
@@ -54,6 +54,20 @@ RSpec.describe "StaticPages", type: :request do
       visit contact_path
 
       expect(page).to have_content("Contact")
+    end
+  end
+
+  describe "#faq" do
+    it "should have the title FAQ" do
+      visit faq_path
+
+      expect(page).to have_title("Expenses | FAQ")
+    end
+
+    it "should have the content 'FAQ'" do
+      visit faq_path
+
+      expect(page).to have_content("FAQ")
     end
   end
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "help" =>  'static_pages#help'
   get "about" => 'static_pages#about'
   get "contact" => 'static_pages#contact'
+  get "faq" => 'static_pages#faq'
 
   resources :users
 
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   post "login" => 'sessions#create'
   delete "logout" => 'sessions#destroy'
 
-  resources :expenses, only: [:create, :new]
+  resources :expenses
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

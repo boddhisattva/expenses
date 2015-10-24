@@ -16,6 +16,8 @@ RSpec.describe User, type: :model do
 
   it { should be_valid }
 
+  it { should respond_to(:expenses) }
+
   describe "when name is not present" do
     before { @user.name = " " }
     it { should_not be_valid }
@@ -121,4 +123,22 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "expense associations" do
+    before { @user.save }
+    let!(:older_expense) do
+      FactoryGirl.create(:expense, user: @user, date: 2.days.ago)
+    end
+    let!(:newer_expense) do
+      FactoryGirl.create(:expense, user: @user, date: 1.day.ago)
+    end
+
+    it "should have the right expenses in the right order" do
+      expect(@user.expenses_feed).to eq [newer_expense, older_expense]
+    end
+
+    it "should destroy associated expenses" do
+      user_expenses_count = @user.expenses.count
+      expect { @user.destroy }.to change { Expense.count }.by(-user_expenses_count)
+    end
+  end
 end
