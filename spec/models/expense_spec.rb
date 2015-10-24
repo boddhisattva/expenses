@@ -14,4 +14,5 @@ RSpec.describe Expense, type: :model do
   it { should respond_to(:date) }
   it { should respond_to(:user) }
 
+  it { should be_valid }
 end
