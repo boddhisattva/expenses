@@ -15,4 +15,11 @@ RSpec.describe Expense, type: :model do
   it { should respond_to(:user) }
 
   it { should be_valid }
+
+  describe "user assocation of an expense" do
+    it "should match with the correct user" do
+      expect(@expense.user).to eq @user
+    end
+  end
+
 end
