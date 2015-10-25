@@ -13,6 +13,22 @@ RSpec.describe "StaticPages", type: :request do
 
       expect(page).to have_content("Welcome to the Expenses App where tracking your expenses is made easy")
     end
+
+    describe "for signed-in users" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:expense, user: user, name: "Shampoo")
+        FactoryGirl.create(:expense, user: user, name: "Toothpaste")
+        log_in user
+        visit root_path
+      end
+
+      it "should render the user expenses feed" do
+        user.expenses_feed.each do |expense|
+          expect(page).to have_content(expense.name)
+        end
+      end
+    end
   end
 
   describe "#about" do
