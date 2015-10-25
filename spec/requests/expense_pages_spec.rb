@@ -29,7 +29,7 @@ describe "Expense pages", type: :request do
 
         before do
           fill_in "expense_name", with: "Sunglasses"
-          fill_in "expense_cost", with: "1000"
+          fill_in "expense_cost", with: 1000
           fill_in "expense_date", with: Time.zone.today
         end
         it "should create a expense" do
