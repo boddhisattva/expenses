@@ -20,11 +20,13 @@ RSpec.describe User, type: :model do
 
   describe "when name is not present" do
     before { @user.name = " " }
+
     it { should_not be_valid }
   end
 
   describe "when name is too long" do
     before { @user.name = "a" * 51 }
+
     it { should_not be_valid }
   end
 
@@ -38,6 +40,7 @@ RSpec.describe User, type: :model do
     it "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
+
       addresses.each do |invalid_address|
         @user.email = invalid_address
         expect(@user).not_to be_valid
@@ -48,6 +51,7 @@ RSpec.describe User, type: :model do
   describe "when email format is valid" do
     it "should be valid" do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+
       addresses.each do |valid_address|
         @user.email = valid_address
         expect(@user).to be_valid
@@ -67,6 +71,7 @@ RSpec.describe User, type: :model do
 
     it "does not allow another user with the same uppercased email from being saved" do
       @user_with_same_email.email = @user.email.upcase
+
       expect(@user_with_same_email).not_to be_valid
     end
   end
@@ -86,6 +91,7 @@ RSpec.describe User, type: :model do
     context "password is nil" do
       it "should not be valid" do
         @user.password_confirmation = nil
+
         expect(@user).not_to be_valid
       end
     end
@@ -93,6 +99,7 @@ RSpec.describe User, type: :model do
     context "password doesn't match confirmation" do
       it "should not be valid" do
         @user.password_confirmation = "mismatch"
+
         expect(@user).not_to be_valid
       end
     end
@@ -101,6 +108,7 @@ RSpec.describe User, type: :model do
       it "should not be valid" do
         @user.password = "a" * 5
         @user.password_confirmation = "a" * 5
+
         expect(@user).not_to be_valid
       end
     end
@@ -138,6 +146,7 @@ RSpec.describe User, type: :model do
 
     it "should destroy associated expenses" do
       user_expenses_count = @user.expenses.count
+
       expect { @user.destroy }.to change { Expense.count }.by(-user_expenses_count)
     end
   end
