@@ -21,16 +21,16 @@ describe "Expense pages", type: :request do
 
         describe "error messages" do
           before { click_button "Create expense" }
-          it { should have_content('error') }
+          it { should have_content("error") }
         end
       end
 
       describe "with valid information" do
 
         before do
-          fill_in 'expense_name', with: "Sunglasses"
-          fill_in 'expense_cost', with: "1000"
-          fill_in 'expense_date', with: Time.zone.today
+          fill_in "expense_name", with: "Sunglasses"
+          fill_in "expense_cost", with: "1000"
+          fill_in "expense_date", with: Time.zone.today
         end
         it "should create a expense" do
           expect { click_button "Create expense" }.to change(Expense, :count).by(1)
@@ -45,7 +45,7 @@ describe "Expense pages", type: :request do
         click_link "Create a new expense"
       end
 
-      it { expect(page).to have_selector(:link_or_button, 'Create expense') }
+      it { expect(page).to have_selector(:link_or_button, "Create expense") }
     end
   end
 
@@ -61,7 +61,7 @@ describe "Expense pages", type: :request do
       describe "error messages" do
         context "name is empty" do
           before do
-            fill_in 'expense_name', with: ""
+            fill_in "expense_name", with: ""
             click_button "Update expense"
           end
 
@@ -72,21 +72,21 @@ describe "Expense pages", type: :request do
     end
 
     describe "with valid information" do
-        let(:new_expense_cost)  { 15 }
-        let(:new_expense_name)  { "Coffee" }
-        before do
-          fill_in 'expense_cost', with: new_expense_cost
-          fill_in 'expense_name', with: new_expense_name
-          click_button "Update expense"
-        end
+      let(:new_expense_cost)  { 15 }
+      let(:new_expense_name)  { "Coffee" }
+      before do
+        fill_in "expense_cost", with: new_expense_cost
+        fill_in "expense_name", with: new_expense_name
+        click_button "Update expense"
+      end
 
-        it { should have_content("Expense updated") }
-        it "should update the expense with the correct cost" do
-          expect(expense.reload.cost).to  eq new_expense_cost
-        end
-        it "should update the expense with the correct name" do
-          expect(expense.reload.name).to  eq new_expense_name
-        end
+      it { should have_content("Expense updated") }
+      it "should update the expense with the correct cost" do
+        expect(expense.reload.cost).to eq new_expense_cost
+      end
+      it "should update the expense with the correct name" do
+        expect(expense.reload.name).to eq new_expense_name
+      end
     end
   end
 end
