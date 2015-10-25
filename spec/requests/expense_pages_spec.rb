@@ -10,7 +10,6 @@ describe "Expense pages", type: :request do
   describe "expense creation" do
     context "user is creating their first expense" do
       before do
-        visit root_path
         click_link "create a new expense"
       end
 
