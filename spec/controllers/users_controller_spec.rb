@@ -12,10 +12,11 @@ RSpec.describe UsersController, type: :controller do
 
     context "password and password_confirmation match" do
       it "should update user password" do
-        patch :update, {id: user.id, user: {name: user.name,
-                                            email: user.email,
-                                            password: new_password,
-                                            password_confirmation: new_password}}
+        patch :update, id: user.id,
+                       user: { name: user.name,
+                               email: user.email,
+                               password: new_password,
+                               password_confirmation: new_password }
 
         expect(user.reload.authenticate(new_password)).to_not eql(false)
       end
@@ -23,10 +24,11 @@ RSpec.describe UsersController, type: :controller do
 
     context "password and password_confirmation do not match" do
       it "should not update user password" do
-        patch :update, {id: user.id, user: {name: user.name,
-                                            email: user.email,
-                                            password: new_password,
-                                            password_confirmation: "random"}}
+        patch :update, id: user.id,
+                       user: { name: user.name,
+                               email: user.email,
+                               password: new_password,
+                               password_confirmation: "random" }
 
         expect(user.reload.authenticate(new_password)).to eql(false)
       end
