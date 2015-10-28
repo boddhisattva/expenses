@@ -101,7 +101,7 @@ describe "Expense pages", type: :request do
       expect { click_link "Delete" }.to change(Expense, :count).by(-1)
     end
 
-    it "should show the appropriate flash message on successful delete", js:true do
+    it "should show the appropriate flash message on successful delete", js: true do
       click_link "Delete"
 
       expect(page).to have_content("Expense deleted successfully")
