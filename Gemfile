@@ -56,8 +56,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'selenium-webdriver', '2.35.1'
+  gem 'poltergeist'
   gem 'capybara', '2.2.0'
+  gem "database_cleaner"
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
 
@@ -70,5 +71,4 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '2.1.4'
   gem 'rails-assets-jquery-ujs', '1.1.0'
   gem 'rails-assets-DataTables'
-
 end

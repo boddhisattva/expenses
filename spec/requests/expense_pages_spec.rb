@@ -89,4 +89,22 @@ describe "Expense pages", type: :request do
       end
     end
   end
+
+  describe "expense deletion" do
+    let!(:expense) { FactoryGirl.create(:expense, user: user) }
+
+    before do
+      visit root_path
+    end
+
+    it "should decrease the total number of expense records by 1" do
+      expect { click_link "Delete" }.to change(Expense, :count).by(-1)
+    end
+
+    it "should show the appropriate flash message on successful delete", js: true do
+      click_link "Delete"
+
+      expect(page).to have_content("Expense deleted successfully")
+    end
+  end
 end
