@@ -29,6 +29,16 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def total
+  end
+
+  def calculate_total
+    @total_expenses = current_user.expenses.total_between(params[:from_date], params[:to_date])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def destroy
     @expense = Expense.find(params[:id])
     get_user_expenses if @expense.destroy
