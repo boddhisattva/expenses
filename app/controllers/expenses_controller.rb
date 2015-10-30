@@ -33,7 +33,12 @@ class ExpensesController < ApplicationController
   end
 
   def calculate_total
-    @total_expenses = current_user.expenses.total_between(params[:from_date], params[:to_date])
+    @expense = Expense.new
+    if params[:from_date].blank? || params[:to_date].blank?
+      @expense.errors.add(:base, "From date and/or To date cannot be blank")
+    else
+      @total_expenses = current_user.expenses.total_between(params[:from_date], params[:to_date])
+    end
     respond_to do |format|
       format.js
     end

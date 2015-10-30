@@ -1,5 +1,9 @@
-<% if @total_expenses == 0 %>
-  $("#total_expenses").html("There were no expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> ");
+<% if @expense.errors.any? %>
+  $("#error_message").html("<%= escape_javascript(render 'shared/error_messages', obj: @expense) %>")
 <% else %>
-  $("#total_expenses").html("The total expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> amounts to: <strong><%= @total_expenses %></strong>");
+  <% if @total_expenses == 0 %>
+    $("#total_expenses").html("There were no expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> ");
+  <% else %>
+    $("#total_expenses").html("The total expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> amounts to: <strong><%= @total_expenses %></strong>");
+  <% end %>
 <% end %>
