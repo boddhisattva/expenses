@@ -115,7 +115,7 @@ describe "Expense pages", type: :request do
       before do
         visit root_path
         click_link "Calculate total expenses"
-        fill_in "to_date",   with: Time.zone.tomorrow
+        fill_in "to_date", with: Time.zone.tomorrow
         click_button "Calculate total"
       end
 
