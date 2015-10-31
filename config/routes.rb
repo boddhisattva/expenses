@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "contact" => 'static_pages#contact'
   get "faq" => 'static_pages#faq'
 
-  resources :users
+  resources :users, except: [:index, :destroy]
 
   get "signup" => 'users#new'
 
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post "login" => 'sessions#create'
   delete "logout" => 'sessions#destroy'
 
-  resources :expenses do
+  resources :expenses, except: [:index, :show] do
     get "total", on: :collection
     get "calculate_total", on: :collection
   end
