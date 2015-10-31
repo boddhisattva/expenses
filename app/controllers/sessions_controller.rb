@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to root_url, flash: {danger: "You are already logged in"}
+      redirect_to root_url, flash: { danger: "You are already logged in" }
     end
   end
 
