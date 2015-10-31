@@ -9,7 +9,7 @@ module ExpensesHelper
     html << "<a href='#' class='close' onClick=\"parentNode.remove()\">×</a>"
     html << "#{message}"
     html << "</div>\n"
-    html
+    html.html_safe
   end
 
 end
