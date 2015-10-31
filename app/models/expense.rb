@@ -7,4 +7,9 @@ class Expense < ActiveRecord::Base
   belongs_to :user
 
   scope :order_by_most_recent, -> (user_id) { where(user_id: user_id).order(date: :desc) }
+  scope :made_between, -> (from_date, to_date) { where(date: from_date..to_date) }
+
+  def self.total_between(from_date, to_date)
+    made_between(from_date, to_date).collect(&:cost).sum
+  end
 end
