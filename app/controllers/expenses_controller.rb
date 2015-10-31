@@ -61,8 +61,8 @@ class ExpensesController < ApplicationController
 
     def dates_are_present?(from_date, to_date)
       @date_validator = DateValidator.new
-      @date_validator.from_date = from_date
-      @date_validator.to_date = to_date
+      @date_validator.from_date = Date.parse(from_date) if from_date.present?
+      @date_validator.to_date = Date.parse(to_date) if to_date.present?
       @date_validator.valid?
     end
 end
