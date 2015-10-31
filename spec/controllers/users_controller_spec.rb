@@ -16,7 +16,7 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to redirect_to(root_url)
       end
 
-      it "should show an appropriate flash message" do
+      it "should show an appropriate flash message on redirect" do
         get :new
 
         expect(flash[:danger]).to eq("You have already signed up")
