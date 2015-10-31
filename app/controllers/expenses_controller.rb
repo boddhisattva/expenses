@@ -44,6 +44,10 @@ class ExpensesController < ApplicationController
   def destroy
     @expense = Expense.find(params[:id])
     get_user_expenses if @expense.destroy
+    rescue ActiveRecord::RecordNotFound => e
+      @error_msg = "The record that you're trying to delete does not exist. " \
+                   "It may have been already deleted. Please refresh the page " \
+                   "to see an updated list of available expenses."
     respond_to do |format|
       format.js
     end
