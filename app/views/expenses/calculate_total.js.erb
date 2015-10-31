@@ -1,6 +1,8 @@
 <% if @date_validator.errors.any? %>
   $("#error_message").html("<%= escape_javascript(render 'shared/error_messages', obj: @date_validator) %>")
+  $("#total_expenses").html('')
 <% else %>
+  $("#error_message").html('')
   <% if @total_expenses == 0 %>
     $("#total_expenses").html("There were no expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> ");
   <% else %>
