@@ -3,21 +3,13 @@ module ExpensesHelper
     date.strftime("%d %B, %Y")
   end
 
-  def display_ajax_failure(message)
+  def display_alert_message(message, alert_class)
     html = ""
-    html << "<div class='alert alert-danger '>\n"
+    html << "<div class='alert alert-#{alert_class} '>\n"
     html << "<a href='#' class='close' onClick=\"parentNode.remove()\">×</a>"
     html << "#{message}"
     html << "</div>\n"
-    html
+    html.html_safe
   end
 
-  def display_ajax_success(message)
-    html = ""
-    html << "<div class='alert alert-success '>\n"
-    html << "<a href='#' class='close' onClick=\"parentNode.remove()\">×</a>"
-    html << "#{message}"
-    html << "</div>\n"
-    html
-  end
 end
