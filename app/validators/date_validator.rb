@@ -12,7 +12,7 @@ class DateValidator
   end
 
   def from_date_before_to_date
-    if Date.parse(from_date) > Date.parse(to_date)
+    if from_date > to_date
       errors.add(:from_date, "cannot be greater than to date")
     end
   end
