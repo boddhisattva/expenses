@@ -1,6 +1,6 @@
 <% if @error_msg.present? %>
-  $("#expenses_destroy_result_message").html("<%= escape_javascript(display_ajax_failure(@error_msg).html_safe) %>");
+  $("#expenses_destroy_result_message").html("<%= escape_javascript(display_alert_message(@error_msg, 'danger').html_safe) %>");
 <% else %>
-  $("#expenses_destroy_result_message").html("<%= escape_javascript(display_ajax_success("Expense deleted successfully").html_safe) %>");
+  $("#expenses_destroy_result_message").html("<%= escape_javascript(display_alert_message("Expense deleted successfully", 'success').html_safe) %>");
   $("#list_expenses").html("<%= escape_javascript(render 'expenses', expenses: @expenses) %>");
 <% end %>
