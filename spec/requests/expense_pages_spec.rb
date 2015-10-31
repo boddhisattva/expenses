@@ -130,7 +130,6 @@ describe "Expense pages", type: :request do
 
     describe "with valid information" do
       context "there are incurred expenses with the specififed period" do
-
         it "should calculate the total expenses accurately", js: true do
           FactoryGirl.create(:expense, user: user)
           FactoryGirl.create(:expense, user: user, name: "Petrol", cost: 68.50, date: Time.zone.yesterday)
