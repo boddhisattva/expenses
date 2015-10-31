@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user, only: [:show, :edit, :update]
 
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to root_url, flash: { danger: "You have already signed up" }
+    else
+      @user = User.new
+    end
   end
 
   def show
