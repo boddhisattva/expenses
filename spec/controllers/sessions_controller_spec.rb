@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
 
-  describe "GET #new" do
+  describe "#new" do
     it "returns http success" do
       get :new
       expect(response).to have_http_status(:success)
@@ -16,6 +16,15 @@ RSpec.describe SessionsController, type: :controller do
         get :new
 
         expect(response).to redirect_to(root_url)
+      end
+
+      it "should show an appropriate flash message on redirect" do
+        user = FactoryGirl.create(:user)
+        log_in(user)
+
+        get :new
+
+        expect(flash[:danger]).to eq("You are already logged in")
       end
     end
   end
