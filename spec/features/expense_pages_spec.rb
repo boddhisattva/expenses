@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Expense pages", type: :request do
+describe "Expense pages", type: :feature do
 
   subject { page }
 

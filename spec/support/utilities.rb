@@ -10,5 +10,5 @@ def log_in(user)
 end
 
 def integration_test?
-  defined?(post_via_redirect)
+  defined?(visit)
 end
