@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :authenticate_user
+  before_action :authorize_user, only: [:edit, :update, :destroy]
 
   def new
     @expense = Expense.new
@@ -16,11 +17,9 @@ class ExpensesController < ApplicationController
   end
 
   def edit
-    @expense = Expense.find(params[:id])
   end
 
   def update
-    @expense = Expense.find(params[:id])
     if @expense.update_attributes(expense_params)
       flash[:success] = "Expense updated"
       redirect_to root_url
@@ -42,7 +41,6 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    @expense = Expense.find(params[:id])
     get_user_expenses if @expense.destroy
     rescue ActiveRecord::RecordNotFound => e
       @error_msg = "The record that you're trying to delete does not exist. " \
@@ -68,5 +66,12 @@ class ExpensesController < ApplicationController
       @date_validator.from_date = Date.parse(from_date) if from_date.present?
       @date_validator.to_date = Date.parse(to_date) if to_date.present?
       @date_validator.valid?
+    end
+
+    def authorize_user
+      @expense = current_user.expenses.find_by(id: params[:id])
+      if @expense.nil?
+        redirect_to root_url, flash: {danger: "Your are not authorized to perform this action" }
+      end
     end
 end
