@@ -10,6 +10,8 @@ This is an app to help better track your expenses. With this app one can -
 * Maintain a list of user expenses that can be searched, sorted and paginated through
 * Calculate the total cost of expenses within a specified time period
 
+One can try using the app wrt the work done so far on [this link][website link]
+
 ## Usage
 
 ### Dependencies
@@ -52,8 +54,9 @@ This is an app to help better track your expenses. With this app one can -
 2. Add admin capabilities to the app
 3. Send e-mails about one's periodical(e.g., monthly) expenses
 
-[gemfile]: https://github.com/boddhisattva/expenses/blob/master/Gemfile
-
 ## Feedback
 
 * Feel free to mail me your thoughts about the app on mail4mohnish@gmail.com
+
+[gemfile]: https://github.com/boddhisattva/expenses/blob/master/Gemfile
+[website link]: https://trackyourexpenses.herokuapp.com/
