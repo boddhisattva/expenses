@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "StaticPages", type: :request do
+RSpec.describe "StaticPages", type: :feature do
   describe "#home" do
     it "should have the title Home" do
       visit root_path

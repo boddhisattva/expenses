@@ -41,11 +41,10 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    get_user_expenses if @expense.destroy
-    rescue ActiveRecord::RecordNotFound => e
-      @error_msg = "The record that you're trying to delete does not exist. " \
-                   "It may have been already deleted. Please refresh the page " \
-                   "to see an updated list of available expenses."
+    if @expense && @expense.destroy
+      get_user_expenses
+      flash[:success] = "Expense deleted successfully"
+    end
     respond_to do |format|
       format.js
     end
@@ -71,7 +70,8 @@ class ExpensesController < ApplicationController
     def authorize_user
       @expense = current_user.expenses.find_by(id: params[:id])
       if @expense.nil?
-        redirect_to root_url, flash: { danger: "Your are not authorized to perform this action" }
+        flash[:danger] = "You cannot perform this action"
+        redirect_to root_url unless request.xhr?
       end
     end
 end

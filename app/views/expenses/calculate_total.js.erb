@@ -3,6 +3,8 @@
   $("#total_expenses").html('')
 <% else %>
   $("#error_message").html('')
+  $('#from_date').val('');
+  $('#to_date').val('');
   <% if @total_expenses == 0 %>
     $("#total_expenses").html("There were no expenses incurred between <%= format_date(params["from_date"].to_date) %> and <%= format_date(params["to_date"].to_date) %> ");
   <% else %>

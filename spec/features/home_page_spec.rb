@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "HomePage", type: :request do
+RSpec.describe "HomePage", type: :feature do
   describe "Home page" do
     it "should have the name of the app" do
       visit root_path
