@@ -71,7 +71,7 @@ class ExpensesController < ApplicationController
     def authorize_user
       @expense = current_user.expenses.find_by(id: params[:id])
       if @expense.nil?
-        redirect_to root_url, flash: {danger: "Your are not authorized to perform this action" }
+        redirect_to root_url, flash: { danger: "Your are not authorized to perform this action" }
       end
     end
 end
