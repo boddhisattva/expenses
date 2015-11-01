@@ -54,7 +54,7 @@ end
 
 group :test do
   gem 'poltergeist'
-  gem 'capybara', '2.2.0'
+  gem 'capybara', '2.5.0'
   gem "database_cleaner"
   gem "codeclimate-test-reporter", group: :test, require: nil
 end
