@@ -38,35 +38,4 @@ describe "Authentication" do
       it { should_not have_link('Log in', href: login_path) }
     end
   end
-
-  describe "authorization" do
-
-    describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
-
-      describe "in the Expenses controller" do
-
-        describe "submitting to the create action" do
-          before { post expenses_path }
-          specify { expect(response).to redirect_to(login_path) }
-        end
-
-        describe "submitting to the edit action" do
-          before { get edit_expense_path(FactoryGirl.create(:expense, user: user)) }
-          specify { expect(response).to redirect_to(login_path) }
-        end
-
-        describe "submitting to the update action" do
-          before { patch expense_path(FactoryGirl.create(:expense, user: user)) }
-          specify { expect(response).to redirect_to(login_path) }
-        end
-
-        describe "submitting to the destroy action" do
-          before { delete expense_path(FactoryGirl.create(:expense, user: user)) }
-          specify { expect(response).to redirect_to(login_path) }
-        end
-      end
-    end
-  end
-
 end
