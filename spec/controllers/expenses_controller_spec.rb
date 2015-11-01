@@ -11,7 +11,7 @@ RSpec.describe ExpensesController, type: :controller do
 
   describe "#edit" do
     before do
-      get :edit, {id: expense1.id}
+      get :edit, id: expense1.id
     end
 
     context "user tries to edit an expense that they have not created" do
@@ -27,7 +27,7 @@ RSpec.describe ExpensesController, type: :controller do
 
   describe "#update" do
     before do
-      patch :update, {id: expense1.id}
+      patch :update, id: expense1.id
     end
 
     context "user tries to update an expense that they have not created" do
@@ -43,7 +43,7 @@ RSpec.describe ExpensesController, type: :controller do
 
   describe "#destroy" do
     before do
-      delete :destroy, {id: expense1.id}
+      delete :destroy, id: expense1.id
     end
 
     context "user tries to destroy an expense that they have not created" do
