@@ -101,7 +101,6 @@ RSpec.describe ExpensesController, type: :controller do
       end
     end
 
-
     context "user is logged in" do
       before do
         log_in(user2)
