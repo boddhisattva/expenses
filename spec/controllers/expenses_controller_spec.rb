@@ -48,7 +48,7 @@ RSpec.describe ExpensesController, type: :controller do
         end
 
         it "should show an appropriate flash message" do
-          expect(flash[:danger]).to eq("Your are not authorized to perform this action")
+          expect(flash[:danger]).to eq("You cannot perform this action")
         end
       end
     end
@@ -81,7 +81,7 @@ RSpec.describe ExpensesController, type: :controller do
         end
 
         it "should show an appropriate flash message" do
-          expect(flash[:danger]).to eq("Your are not authorized to perform this action")
+          expect(flash[:danger]).to eq("You cannot perform this action")
         end
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe ExpensesController, type: :controller do
   describe "#destroy" do
     context "user is not logged in" do
       before do
-        delete :destroy, id: expense1.id
+        xhr :delete, :destroy, id: expense1.id
       end
       it "should redirect the user to login page" do
         expect(response).to redirect_to(login_url)
@@ -103,20 +103,31 @@ RSpec.describe ExpensesController, type: :controller do
 
 
     context "user is logged in" do
-      context "user tries to destroy an expense that they have not created" do
-        before do
-          log_in(user2)
-          delete :destroy, id: expense1.id
-        end
-        it "should redirect the user to app home page" do
-          expect(response).to redirect_to(root_url)
-        end
+      before do
+        log_in(user2)
+      end
 
+      context "user tries to destroy an expense that they have not created" do
         it "should show an appropriate flash message" do
-          expect(flash[:danger]).to eq("Your are not authorized to perform this action")
+          xhr :delete, :destroy, id: expense1.id
+
+          expect(flash[:danger]).to eq("You cannot perform this action")
         end
       end
+
+      context "tries to delete the same expense twice" do
+        it "should show an appropriate message" do
+          expense2 = FactoryGirl.create(:expense, user: user2)
+
+          xhr :delete, :destroy, id: expense2.id
+          xhr :delete, :destroy, id: expense2.id
+
+          expect(flash[:danger]).to eq("You cannot perform this action")
+        end
+      end
+
     end
+
   end
 
 end
