@@ -1,25 +1,25 @@
 require "rails_helper"
 
-RSpec.describe "UserPages", type: :feature do
+RSpec.feature "UserPages", type: :feature do
 
-  describe "User pages" do
+  feature "User pages" do
 
     subject { page }
 
-    describe "signup page" do
+    feature "signup page" do
       before { visit signup_path }
 
       it { should have_content("Sign up") }
       it { should have_title("Expenses | Sign up") }
     end
 
-    describe "signup" do
+    feature "signup" do
 
       before { visit signup_path }
 
       let(:submit) { "Create my account" }
 
-      describe "with invalid information" do
+      feature "with invalid information" do
         before do
           fill_in "Email",        with: "user@example.com"
           fill_in "Password",     with: "foobar"
@@ -41,7 +41,7 @@ RSpec.describe "UserPages", type: :feature do
         end
       end
 
-      describe "with valid information" do
+      feature "with valid information" do
         before do
           fill_in "Email",        with: "user@example.com"
           fill_in "Name",         with: "John Doe"
@@ -68,7 +68,7 @@ RSpec.describe "UserPages", type: :feature do
           expect(page).to have_content("Log out")
         end
 
-        describe "after saving the user" do
+        feature "after saving the user" do
           before { click_button submit }
           let(:user) { User.find_by(email: 'user@example.com') }
 
@@ -79,7 +79,7 @@ RSpec.describe "UserPages", type: :feature do
       end
     end
 
-    describe "logout" do
+    feature "logout" do
       before do
         visit login_path
         @user = FactoryGirl.create(:user)
@@ -87,7 +87,7 @@ RSpec.describe "UserPages", type: :feature do
 
       let(:submit) { "Log in" }
 
-      describe "for a logged in user" do
+      feature "for a logged in user" do
         before do
           fill_in "Email",        with: @user.email
           fill_in "Password",     with: @user.password
@@ -101,26 +101,26 @@ RSpec.describe "UserPages", type: :feature do
       end
     end
 
-    describe "edit" do
+    feature "edit" do
       let(:user) { FactoryGirl.create(:user) }
       before do
         log_in user
         visit edit_user_path(user)
       end
 
-      describe "page" do
+      feature "page" do
         it { should have_content("Update your profile") }
         it { should have_title("Edit user") }
         it { should have_link('change', href: 'http://gravatar.com/emails') }
       end
 
-      describe "with invalid information" do
+      feature "with invalid information" do
         before { click_button "Save changes" }
 
         it { should have_content('error') }
       end
 
-      describe "with valid information" do
+      feature "with valid information" do
         let(:new_name)  { "New Name" }
         let(:new_email) { "new@example.com" }
         before do
