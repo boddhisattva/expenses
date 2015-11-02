@@ -1,41 +1,41 @@
 require "rails_helper"
 
-describe "Authentication" do
+feature "Authentication" do
 
   subject { page }
 
-  describe "signin page" do
+  feature "signin page" do
     before { visit login_path }
 
-    it { should have_content('Log in') }
-    it { should have_title('Log in') }
+    scenario { should have_content('Log in') }
+    scenario { should have_title('Log in') }
   end
 
-  describe "signin" do
+  feature "signin" do
     before { visit login_path }
 
-    describe "with invalid information" do
+    feature "with invalid information" do
       before { click_button "Log in" }
 
-      it { should have_title('Log in') }
-      it { should have_selector('div.alert.alert-danger') }
+      scenario { should have_title('Log in') }
+      scenario { should have_selector('div.alert.alert-danger') }
 
-      describe "after visiting another page" do
+      feature "after visiting another page" do
         before { click_link "Home" }
-        it { should_not have_selector('div.alert.alert-danger') }
+        scenario { should_not have_selector('div.alert.alert-danger') }
       end
     end
 
-    describe "with valid information" do
+    feature "with valid information" do
       let(:user) { FactoryGirl.create(:user) }
       before do
         log_in user
       end
 
-      it { should have_content(user.name) }
-      it { should have_link('Profile',     href: user_path(user)) }
-      it { should have_link('Log out',    href: logout_path) }
-      it { should_not have_link('Log in', href: login_path) }
+      scenario { should have_content(user.name) }
+      scenario { should have_link('Profile',     href: user_path(user)) }
+      scenario { should have_link('Log out',    href: logout_path) }
+      scenario { should_not have_link('Log in', href: login_path) }
     end
   end
 end
