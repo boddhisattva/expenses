@@ -56,7 +56,7 @@ group :test do
   gem 'poltergeist'
   gem 'capybara', '2.5.0'
   gem "database_cleaner"
-  gem "codeclimate-test-reporter", group: :test, require: nil
+  gem "codeclimate-test-reporter", require: nil
 end
 
 # To turn off Rails asset pipeline log.
