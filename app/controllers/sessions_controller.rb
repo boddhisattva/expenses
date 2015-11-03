@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     if logged_in?
       redirect_to root_url, flash: { danger: "You are already logged in" }
@@ -12,8 +11,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_url
     else
-      flash.now[:danger] = 'Invalid email and/or password combination'
-      render 'new'
+      flash.now[:danger] = "Invalid email and/or password combination"
+      render "new"
     end
   end
 
@@ -21,5 +20,4 @@ class SessionsController < ApplicationController
     log_out if logged_in?
     redirect_to root_url
   end
-
 end

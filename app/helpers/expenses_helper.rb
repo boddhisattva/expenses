@@ -11,5 +11,4 @@ module ExpensesHelper
     html << "</div>\n"
     html.html_safe
   end
-
 end

@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
       redirect_to root_url
       flash[:success] = "Expense was successfully created"
     else
-      render 'new'
+      render "new"
     end
   end
 

@@ -70,11 +70,11 @@ RSpec.feature "UserPages", type: :feature do
 
         feature "after saving the user" do
           before { click_button submit }
-          let(:user) { User.find_by(email: 'user@example.com') }
+          let(:user) { User.find_by(email: "user@example.com") }
 
-          it { should have_link('Log out') }
+          it { should have_link("Log out") }
           it { should have_content(user.name) }
-          it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+          it { should have_selector("div.alert.alert-success", text: "Welcome") }
         end
       end
     end
@@ -111,13 +111,13 @@ RSpec.feature "UserPages", type: :feature do
       feature "page" do
         it { should have_content("Update your profile") }
         it { should have_title("Edit user") }
-        it { should have_link('change', href: 'http://gravatar.com/emails') }
+        it { should have_link("change", href: "http://gravatar.com/emails") }
       end
 
       feature "with invalid information" do
         before { click_button "Save changes" }
 
-        it { should have_content('error') }
+        it { should have_content("error") }
       end
 
       feature "with valid information" do
@@ -132,9 +132,9 @@ RSpec.feature "UserPages", type: :feature do
         end
 
         it { should have_title(new_name) }
-        it { should have_selector('div.alert.alert-success') }
-        it { should have_link('Log out', href: logout_path) }
-        specify { expect(user.reload.name).to  eq new_name }
+        it { should have_selector("div.alert.alert-success") }
+        it { should have_link("Log out", href: logout_path) }
+        specify { expect(user.reload.name).to eq new_name }
         specify { expect(user.reload.email).to eq new_email }
       end
     end
