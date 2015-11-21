@@ -23,8 +23,15 @@ RSpec.describe Expense, type: :model do
   end
 
   describe "when expense cost is not present" do
-    before { @expense.cost = nil }
-    it { should_not be_valid }
+    context "expense cost is an empty string" do
+      before { @expense.cost = "" }
+      it { should_not be_valid }
+    end
+
+    context "expense cost is nil" do
+      before { @expense.cost = nil }
+      it { should_not be_valid }
+    end
   end
 
   describe "when expense name is not present" do
