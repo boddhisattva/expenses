@@ -16,8 +16,8 @@ One can try using the app wrt the work done so far on [this link][website link]
 
 ### Dependencies
 
-1. Ruby 2.2.2
-2. Rails 4.2.4
+1. Ruby 2.3
+2. Rails 4.2.5.1
 3. PostgreSQL 9.4.1
 3. For other dependecies, please check the [Gemfile][gemfile]
 
