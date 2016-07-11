@@ -18,7 +18,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(response).to redirect_to(root_url)
       end
 
-      it "should show an appropriate flash message on" do
+      it "should show an appropriate flash message on redirect" do
         user = FactoryGirl.create(:user)
         log_in(user)
 
