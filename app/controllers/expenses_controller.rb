@@ -32,7 +32,7 @@ class ExpensesController < ApplicationController
   end
 
   def calculate_total
-    if dates_are_present?(params[:from_date], params[:to_date])
+    if dates_are_valid?(params[:from_date], params[:to_date])
       @total_expenses = current_user.expenses.total_between(params[:from_date], params[:to_date])
     end
     respond_to do |format|
@@ -60,7 +60,7 @@ class ExpensesController < ApplicationController
       @expenses = Expense.order_by_most_recent(current_user.id)
     end
 
-    def dates_are_present?(from_date, to_date)
+    def dates_are_valid?(from_date, to_date)
       @date_validator = DateValidator.new
       @date_validator.from_date = Date.parse(from_date) if from_date.present?
       @date_validator.to_date = Date.parse(to_date) if to_date.present?
