@@ -53,6 +53,10 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails", "4.2.0"
   gem 'rubocop', require: false
+  gem 'flamegraph'
+  gem 'rack-mini-profiler'
+  gem 'stackprof'
+  gem 'fast_stack'
 end
 
 group :test do
@@ -64,9 +68,6 @@ end
 
 # To turn off Rails asset pipeline log.
 gem "quiet_assets", group: :development
-
-gem 'flamegraph'
-gem 'rack-mini-profiler'
 
 group :production do
   gem "rails_12factor", "0.0.2"
