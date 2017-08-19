@@ -92,9 +92,6 @@ RSpec.describe ExpensesController, type: :controller do
       before do
         xhr :delete, :destroy, id: expense1.id
       end
-      it "should redirect the user to login page" do
-        expect(response).to redirect_to(login_url)
-      end
 
       it "should show the appropriate flash message" do
         expect(flash[:danger]).to eq("Please log in to continue")
