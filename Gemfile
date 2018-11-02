@@ -1,8 +1,9 @@
 source "https://rubygems.org"
-ruby "2.4.1"
+
+ruby "2.4.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 4.2.5"
+gem 'rails', '4.2.8'
 
 # Use postgres as the database for Active Record
 gem "pg"
