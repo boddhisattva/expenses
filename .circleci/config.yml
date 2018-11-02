@@ -64,7 +64,7 @@ jobs: # a collection of steps
       - save_cache:
           key: v1-phantomjs-2.1.1
           paths:
-            - /usr/local/bin/phantomjs
+            - vendor/phantomjs
 
       - run:
           name: Run rspec in parallel
