@@ -1,8 +1,9 @@
 source "https://rubygems.org"
-ruby "2.4.1"
+
+ruby "2.4.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 4.2.5"
+gem 'rails', '4.2.8'
 
 # Use postgres as the database for Active Record
 gem "pg"
@@ -65,6 +66,7 @@ group :test do
   gem "database_cleaner"
   gem "codeclimate-test-reporter", require: nil
   gem 'simplecov', :require => false, :group => :test
+  gem "rspec_junit_formatter"
 end
 
 # To turn off Rails asset pipeline log.
