@@ -49,9 +49,6 @@ jobs: # a collection of steps
           name: Database setup
           command: cp config/database.yml.example config/database.yml && bundle exec rake db:create RAILS_ENV=test && bundle exec rake db:schema:load --trace
 
-      - restore_cache:
-          key: v1-phantomjs-2.1.1
-
       - run:
           name: Install phantomjs
           command: |
@@ -60,11 +57,6 @@ jobs: # a collection of steps
             fi
 
             sudo chmod ugo+x /usr/local/bin/phantomjs
-
-      - save_cache:
-          key: v1-phantomjs-2.1.1
-          paths:
-            - /usr/local/bin/phantomjs
 
       - run:
           name: Run rspec in parallel
