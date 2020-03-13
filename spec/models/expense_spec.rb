@@ -7,15 +7,6 @@ RSpec.describe Expense, type: :model do
     @expense = FactoryGirl.create(:expense, user: @user)
   end
 
-  subject { @expense }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:cost) }
-  it { should respond_to(:date) }
-  it { should respond_to(:user) }
-
-  it { should be_valid }
-
   describe "user assocation of an expense" do
     it "should match with the correct user" do
       expect(@expense.user).to eq @user
