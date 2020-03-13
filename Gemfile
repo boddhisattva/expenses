@@ -67,6 +67,7 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem 'simplecov', :require => false, :group => :test
   gem "rspec_junit_formatter"
+  gem 'shoulda-matchers'
 end
 
 # To turn off Rails asset pipeline log.
