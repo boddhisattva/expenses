@@ -7,58 +7,17 @@ RSpec.describe Expense, type: :model do
     @expense = FactoryGirl.create(:expense, user: @user)
   end
 
-  subject { @expense }
-
-  it { should respond_to(:name) }
-  it { should respond_to(:cost) }
-  it { should respond_to(:date) }
-  it { should respond_to(:user) }
-
-  it { should be_valid }
-
   describe "user assocation of an expense" do
     it "should match with the correct user" do
       expect(@expense.user).to eq @user
     end
   end
 
-  describe "when expense cost is not present" do
-    context "expense cost is an empty string" do
-      before { @expense.cost = "" }
-      it { should_not be_valid }
-    end
-
-    context "expense cost is nil" do
-      before { @expense.cost = nil }
-      it { should_not be_valid }
-    end
+  describe 'validations' do
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:cost) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:date) }
+    it { should validate_numericality_of(:cost) }
   end
-
-  describe "when expense name is not present" do
-    context "expense name is an empty string" do
-      before { @expense.name = "" }
-      it { should_not be_valid }
-    end
-
-    context "expense name is nil" do
-      before { @expense.name = nil }
-      it { should_not be_valid }
-    end
-  end
-
-  describe "when expense date is not present" do
-    before { @expense.date = nil }
-    it { should_not be_valid }
-  end
-
-  describe "when user_id is not present" do
-    before { @expense.user_id = nil }
-    it { should_not be_valid }
-  end
-
-  describe "when cost is not a number" do
-    before { @expense.cost = "12a3" }
-    it { should_not be_valid }
-  end
-
 end
